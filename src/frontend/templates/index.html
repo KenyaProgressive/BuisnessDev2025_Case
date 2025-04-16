@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.E.C.H. BuisnessDev2025 Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .project-title {
+            text-align: left;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .project-title h2 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 28px;
+            color: #2c3e50;
+            font-weight: 600;
+            margin: 0;
+        }
+        .project-title p {
+            font-size: 16px;
+            color: #666;
+            margin: 8px 0 0 0;
+        }
+        h1 {
+            font-family: 'Raleway', sans-serif;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        .content-wrapper {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .text-input-section {
+            flex: 1;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .text-input-section label {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+        .text-input-section textarea {
+            width: 100%;
+            min-height: 150px;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+            resize: vertical;
+            font-family: 'Arial', sans-serif;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .test-button {
+            font-family: 'Montserrat', sans-serif;
+            padding: 15px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .test-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="project-title">
+            <h2>Платформа профориентации | BuisnessDev2025</h2>
+            <p>Решение от команды T.E.C.H.</p>
+        </div>
+        <h1>Выберите тест</h1>
+        <div class="button-container">
+            <button class="test-button" onclick="window.location.href='/tests/test1'">Базовый уровень теста</button>
+            <button class="test-button" onclick="navigateToTest('/test/test2')">Средний уровень теста</button>
+            <button class="test-button" onclick="navigateToTest('/test/test3')">ИИ профориентация</button>
+        </div>
+    </div>
+</body>
+</html> 
