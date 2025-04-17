@@ -65,6 +65,12 @@ def ai_proforient(request: Request):
 @tpage.post("/test3/submit")
 def submit_results_of_ai_proforient(request: Request, prompt: AI_Prompt):
     data = print_info_to_user(prompt)
-    insert_ai_answer(data)
+    return {"response": data[1]}
+
+@tpage.post("/test3/save_chat")
+def save_chat(request: Request, history: dict):
+    for message in history['history']:
+        insert_ai_answer([message["user_input"], message["ai_response"]])
+
     
 

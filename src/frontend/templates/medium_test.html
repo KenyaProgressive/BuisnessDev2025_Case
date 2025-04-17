@@ -368,8 +368,29 @@
             }
         }
 
+        function validateForm() {
+            const questions = [
+                'case1_q1', 'case1_q2', 'case1_q3',
+                'case2_q1', 'case2_q2', 'case2_q3',
+                'case3_q1', 'case3_q2', 'case3_q3'
+            ];
+
+            for (const question of questions) {
+                const answered = document.querySelector(`input[name="${question}"]:checked`);
+                if (!answered) {
+                    alert('Пожалуйста, ответьте на все вопросы перед отправкой теста.');
+                    return false;
+                }
+            }
+            return true;
+        }
+
         document.getElementById('mediumTestForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
+            if (!validateForm()) {
+                return;
+            }
 
             const answers = {
                 case1_q1: document.querySelector('input[name="case1_q1"]:checked').value,

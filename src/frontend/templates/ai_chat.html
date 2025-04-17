@@ -163,23 +163,20 @@
             const message = messageInput.value.trim();
             if (!message) return;
 
-            // Отключаем кнопку и инпут на время отправки
             sendButton.disabled = true;
             messageInput.disabled = true;
 
-            // Добавляем сообщение пользователя
             addMessage(message, true);
             
-            // Очищаем поле ввода
             messageInput.value = '';
 
             try {
-                const response = await fetch('/send-message', {
+                const response = await fetch('/tests/test3/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(message)
+                    body: JSON.stringify({ prompt: message })
                 });
 
                 if (!response.ok) {
@@ -189,10 +186,8 @@
                 const data = await response.json();
                 addMessage(data.response, false);
             } catch (error) {
-                console.error('Error:', error);
                 addMessage('Извините, произошла ошибка при обработки вашего сообщения.', false);
             } finally {
-                // Включаем кнопку и инпут обратно
                 sendButton.disabled = false;
                 messageInput.disabled = false;
                 messageInput.focus();
@@ -207,7 +202,6 @@
             }
         });
 
-        // Фокус на поле ввода при загрузке страницы
         messageInput.focus();
     </script>
 </body>

@@ -27,4 +27,6 @@ class TestAnswersAdditional(pydantic.BaseModel):
 class AI_Prompt(pydantic.BaseModel):
     prompt: str
 
+class chat_story(pydantic.BaseModel):
+    history: list[dict]
 
