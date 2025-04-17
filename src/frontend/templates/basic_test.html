@@ -194,9 +194,34 @@
 
         document.getElementById('basicTestForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Здесь будет логика обработки формы
+
+        const answers = {
+            question1: document.querySelector('input[name="question1"]:checked').value,
+            question2: document.querySelector('input[name="question2"]:checked').value,
+            question3: document.querySelector('input[name="question3"]:checked').value,
+            question4: document.querySelector('input[name="question4"]:checked').value,
+        };
+
+        fetch("tests/test1/submit", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(answers),
+        })
+
+        .then(response => response.json())
+        .then(data => {
+
             alert('Тест успешно отправлен!');
+            window.location.href = '/test1/submit';
+        })
+        .catch(error => {
+            alert('Произошла ошибка при отправке теста. Пожалуйста, попробуйте позже.');
             window.location.href = '/';
+        });
+        
+      
         });
     </script>
 </body>
