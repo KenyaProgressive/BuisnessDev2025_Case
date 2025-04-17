@@ -2,7 +2,8 @@ import fastapi.responses
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse
 
-from db.db import insert_basic_answers_data, make_additional_data_structure, insert_ai_answer
+from db.db import insert_basic_answers_data, make_additional_data_structure, insert_ai_answer, \
+    insert_additional_answers_data
 from src.help_funcs import make_a_choise_for_base, VARIANTS_FOR_BASIC, make_a_choice_for_additional
 from src.jinja_config import templates
 from src.models.models import TestAnswers, TestAnswersAdditional, AI_Prompt
@@ -40,6 +41,7 @@ def medium_level_test(request_medium_test: Request):
 
 @tpage.post("/test2/submit")
 def submit_results_of_medium_level(request: Request, answers_2: TestAnswersAdditional):
+    insert_additional_answers_data(answers_2)
     data = make_additional_data_structure(answers_2)
     result = ','.join(make_a_choice_for_additional(data)).strip()
     return fastapi.responses.RedirectResponse(url=f"/tests/test2/success?result={result}", status_code=303)
@@ -50,7 +52,7 @@ def print_success_test2(request: Request, result: str = None):
     if result:
         result_lst = result.split(",")
         for res in result_lst:
-            with open(f"test_results/additional/{res}", "r", encoding="utf-8") as f:
+            with open(f"test_results/additional/{res.strip()}", "r", encoding="utf-8") as f:
                     res = f.read()
             result_to_print += res
     return templates.TemplateResponse("success.html", {"request": request, "result_to_print": result_to_print})

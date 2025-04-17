@@ -35,16 +35,18 @@ def insert_basic_answers_data(data):
 def insert_additional_answers_data(data):
     table_name = "additional_test_answers"
     answers = make_additional_data_structure(data)
+    counter: int = 0
     tm = datetime.now()
     with conn:
         with conn.cursor() as cursor:
             query_push_answers = sql.SQL("""INSERT INTO {} (answer, datetime_answer) VALUES (%s, %s)""").format(sql.Identifier(table_name))
-            for i in range(len(answers)):
-                cursor.execute(query_push_answers, (answers[i], tm))
+            while counter != len(answers):
+                cursor.execute(query_push_answers, (answers[counter], tm))
+                counter += 1
     return answers
 
 def insert_ai_answer(data):
-    table_name = "ai_test_results "
+    table_name = "ai_test_results"
     tm = datetime.now()
     with conn:
         with conn.cursor() as cursor:
