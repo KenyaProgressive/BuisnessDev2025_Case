@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Средний уровень теста | T.E.C.H. BuisnessDev2025 Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .header {
+            background-color: #3498db;
+            color: white;
+            padding: 30px;
+            border-radius: 10px 10px 0 0;
+        }
+        .header h1 {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            font-size: 24px;
+        }
+        .header p {
+            margin: 10px 0 0;
+            opacity: 0.9;
+        }
+        .test-content {
+            padding: 30px;
+        }
+        .case-block {
+            margin-bottom: 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .case-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .case-situation {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .question {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .question h2 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 18px;
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .option:hover {
+            background-color: #f8f9fa;
+        }
+        .option input[type="radio"] {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        .option label {
+            cursor: pointer;
+            font-size: 16px;
+            color: #444;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 0 20px 20px;
+        }
+        .btn {
+            font-family: 'Montserrat', sans-serif;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .btn-secondary {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Средний уровень теста</h1>
+            <p>Внимательно прочитайте каждую ситуацию и выберите наиболее подходящий вариант ответа</p>
+        </div>
+        <form id="mediumTestForm" class="test-content">
+            <!-- Кейс 1 -->
+            <div class="case-block">
+                <div class="case-header">Кейс 1: Маркетинговый проект</div>
+                <div class="case-situation">
+                    Вы работаете в digital-агентстве. Клиент (сеть кофеен) хочет увеличить продажи нового летнего напитка. Бюджет ограничен.
+                </div>
+                <div class="question">
+                    <h2>Какой канал продвижения вы выберете в первую очередь?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q1a" name="case1_q1" value="A" required>
+                            <label for="q1a">Соцсети (Instagram/TikTok)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1b" name="case1_q1" value="B">
+                            <label for="q1b">Email-рассылка для постоянных клиентов</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1c" name="case1_q1" value="C">
+                            <label for="q1c">Наружная реклама в городе</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1d" name="case1_q1" value="D">
+                            <label for="q1d">Партнерство с доставкой еды (Uber Eats, Delivery Club)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h2>Как вы оцените эффективность кампании?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q2a" name="case1_q2" value="A" required>
+                            <label for="q2a">По количеству продаж напитка</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2b" name="case1_q2" value="B">
+                            <label for="q2b">По охвату и вовлеченности в соцсетях</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2c" name="case1_q2" value="C">
+                            <label for="q2c">По отзывам клиентов</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2d" name="case1_q2" value="D">
+                            <label for="q2d">По ROI (возврат инвестиций)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h2>Что сделаете, если первые две недели продажи не растут?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q3a" name="case1_q3" value="A" required>
+                            <label for="q3a">Усилю рекламу в соцсетях</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3b" name="case1_q3" value="B">
+                            <label for="q3b">Проведу опрос клиентов, чтобы понять причину</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3c" name="case1_q3" value="C">
+                            <label for="q3c">Предложу клиенту изменить стратегию</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3d" name="case1_q3" value="D">
+                            <label for="q3d">Добавлю акцию (например, «2-й напиток в подарок»)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кейс 2 -->
+            <div class="case-block">
+                <div class="case-header">Кейс 2: Инженерный проект</div>
+                <div class="case-situation">
+                    На производстве станок часто перегревается, что снижает эффективность работы.
+                </div>
+                <div class="question">
+                    <h2>С чего начнете решение проблемы?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q4a" name="case2_q1" value="A" required>
+                            <label for="q4a">Проверю техническую документацию</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4b" name="case2_q1" value="B">
+                            <label for="q4b">Проанализирую температурные датчики</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4c" name="case2_q1" value="C">
+                            <label for="q4c">Опрошу рабочих о симптомах поломки</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4d" name="case2_q1" value="D">
+                            <label for="q4d">Сравню с аналогичными станками</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h2>Какой способ охлаждения предложите?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q5a" name="case2_q2" value="A" required>
+                            <label for="q5a">Установка дополнительных вентиляторов</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5b" name="case2_q2" value="B">
+                            <label for="q5b">Жидкостное охлаждение</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5c" name="case2_q2" value="C">
+                            <label for="q5c">Оптимизация режима работы (меньше нагрузка)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5d" name="case2_q2" value="D">
+                            <label for="q5d">Полная замена системы</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h2>Как убедите руководство в вашем решении?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q6a" name="case2_q3" value="A" required>
+                            <label for="q6a">Предоставлю расчеты экономии</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6b" name="case2_q3" value="B">
+                            <label for="q6b">Проведу тестовый запуск</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6c" name="case2_q3" value="C">
+                            <label for="q6c">Покажу примеры успешных решений в других компаниях</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6d" name="case2_q3" value="D">
+                            <label for="q6d">Предложу поэтапный план внедрения</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кейс 3 -->
+            <div class="case-block">
+                <div class="case-header">Кейс 3: Деловая игра (Переговоры)</div>
+                <div class="case-situation">
+                    Вы – менеджер по продажам. Клиент недоволен ценой и угрожает уйти к конкурентам.
+                </div>
+                <div class="question">
+                    <h2>Как начнете диалог?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q7a" name="case3_q1" value="A" required>
+                            <label for="q7a">Спрошу, что именно его не устраивает</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q7b" name="case3_q1" value="B">
+                            <label for="q7b">Сразу предложу альтернативные условия</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q7c" name="case3_q1" value="C">
+                            <label for="q7c">Напомню о преимуществах продукта</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q7d" name="case3_q1" value="D">
+                            <label for="q7d">Попрошу время на обсуждение с руководством</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h2>Что предложите вместо скидки?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q8a" name="case3_q2" value="A" required>
+                            <label for="q8a">Бесплатное обучение для сотрудников</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q8b" name="case3_q2" value="B">
+                            <label for="q8b">Дополнительный сервис (например, доставку)</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q8c" name="case3_q2" value="C">
+                            <label for="q8c">Рассрочку платежа</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q8d" name="case3_q2" value="D">
+                            <label for="q8d">Бонусы при повторном заказе</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <h2>Как поступите, если клиент все равно уходит?</h2>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" id="q9a" name="case3_q3" value="A" required>
+                            <label for="q9a">Поддержу контакт для будущего сотрудничества</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q9b" name="case3_q3" value="B">
+                            <label for="q9b">Попрошу обратную связь для улучшения продукта</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q9c" name="case3_q3" value="C">
+                            <label for="q9c">Предложу «прощальное» спецпредложение</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q9d" name="case3_q3" value="D">
+                            <label for="q9d">Поблагодарю и завершу сделку</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="button" class="btn btn-secondary" onclick="endTestEarly()">Закончить тест досрочно</button>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function endTestEarly() {
+            if (confirm('Вы уверены, что хотите закончить тест досрочно? Ваши ответы не будут сохранены.')) {
+                window.location.href = '/';
+            }
+        }
+
+        document.getElementById('mediumTestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const answers = {
+                case1_q1: document.querySelector('input[name="case1_q1"]:checked').value,
+                case1_q2: document.querySelector('input[name="case1_q2"]:checked').value,
+                case1_q3: document.querySelector('input[name="case1_q3"]:checked').value,
+                case2_q1: document.querySelector('input[name="case2_q1"]:checked').value,
+                case2_q2: document.querySelector('input[name="case2_q2"]:checked').value,
+                case2_q3: document.querySelector('input[name="case2_q3"]:checked').value,
+                case3_q1: document.querySelector('input[name="case3_q1"]:checked').value,
+                case3_q2: document.querySelector('input[name="case3_q2"]:checked').value,
+                case3_q3: document.querySelector('input[name="case3_q3"]:checked').value
+            };
+
+            fetch('/tests/test2/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(answers)
+            })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    window.location.href = '/tests/test2/success';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Произошла ошибка при отправке теста. Пожалуйста, попробуйте позже.');
+            });
+        });
+    </script>
+</body>
+</html> 

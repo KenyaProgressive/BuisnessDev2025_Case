@@ -126,11 +126,11 @@
                 <h2>1. Где вы предпочитаете проводить время в одиночестве или в окружении людей?</h2>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q1a" name="q1" value="A" required>
+                        <input type="radio" id="q1a" name="question1" value="A" required>
                         <label for="q1a">Одному, за спокойными занятиями.</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q1b" name="q1" value="B">
+                        <input type="radio" id="q1b" name="question1" value="B">
                         <label for="q1b">В окружении людей, обсуждая или участвуя в активностях.</label>
                     </div>
                 </div>
@@ -140,11 +140,11 @@
                 <h2>2. Как вам проще воспринимать информацию?</h2>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q2a" name="q2" value="A" required>
+                        <input type="radio" id="q2a" name="question2" value="A" required>
                         <label for="q2a">Через конкретные факты, подробности и практические примеры.</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q2b" name="q2" value="B">
+                        <input type="radio" id="q2b" name="question2" value="B">
                         <label for="q2b">Через образы, общие идеи и интуитивное понимание.</label>
                     </div>
                 </div>
@@ -154,11 +154,11 @@
                 <h2>3. Принимая решения, что для вас важнее?</h2>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q3a" name="q3" value="A" required>
+                        <input type="radio" id="q3a" name="question3" value="A" required>
                         <label for="q3a">Логика и объективность.</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q3b" name="q3" value="B">
+                        <input type="radio" id="q3b" name="question3" value="B">
                         <label for="q3b">Личностные эмоции и чувства других людей.</label>
                     </div>
                 </div>
@@ -168,11 +168,11 @@
                 <h2>4. Как вы предпочитаете организовывать свою жизнь?</h2>
                 <div class="options">
                     <div class="option">
-                        <input type="radio" id="q4a" name="q4" value="A" required>
+                        <input type="radio" id="q4a" name="question4" value="A" required>
                         <label for="q4a">Планировать заранее, составлять расписания и избегать спонтанных решений.</label>
                     </div>
                     <div class="option">
-                        <input type="radio" id="q4b" name="q4" value="B">
+                        <input type="radio" id="q4b" name="question4" value="B">
                         <label for="q4b">Быть гибким, принимать решения на ходу.</label>
                     </div>
                 </div>
@@ -195,33 +195,31 @@
         document.getElementById('basicTestForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
-        const answers = {
-            question1: document.querySelector('input[name="question1"]:checked').value,
-            question2: document.querySelector('input[name="question2"]:checked').value,
-            question3: document.querySelector('input[name="question3"]:checked').value,
-            question4: document.querySelector('input[name="question4"]:checked').value,
-        };
+            const answers = {
+                question1: document.querySelector('input[name="question1"]:checked').value,
+                question2: document.querySelector('input[name="question2"]:checked').value,
+                question3: document.querySelector('input[name="question3"]:checked').value,
+                question4: document.querySelector('input[name="question4"]:checked').value
+            };
 
-        fetch("tests/test1/submit", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(answers),
-        })
-
-        .then(response => response.json())
-        .then(data => {
-
-            alert('Тест успешно отправлен!');
-            window.location.href = '/test1/submit';
-        })
-        .catch(error => {
-            alert('Произошла ошибка при отправке теста. Пожалуйста, попробуйте позже.');
-            window.location.href = '/';
-        });
-        
-      
+            fetch("/tests/test1/submit", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(answers)
+            })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    window.location.href = '/tests/test1/success';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Произошла ошибка при отправке теста. Пожалуйста, попробуйте позже.');
+            });
         });
     </script>
 </body>

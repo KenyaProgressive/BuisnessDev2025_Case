@@ -6,5 +6,3 @@ class TestAnswers(pydantic.BaseModel):
     question2: str
     question3: str
     question4: str
-
-
