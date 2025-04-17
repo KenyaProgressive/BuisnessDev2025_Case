@@ -59,6 +59,57 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+        
+        /* New styles for results section */
+        .results-section {
+            margin-top: 30px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.5s ease-out;
+        }
+        .results-section.expanded {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+        .results-content {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 0 auto;
+            text-align: left;
+            border: 1px solid #e0e0e0;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 90%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .results-title {
+            font-family: 'Raleway', sans-serif;
+            font-size: 24px;
+            color: #2c3e50;
+            margin: 0 0 20px 0;
+            font-weight: 600;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .result-text {
+            margin: 0;
+            padding: 0;
+            white-space: pre-line;
+        }
+        .recommended-professions {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .results-content {
+            animation: fadeIn 0.5s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -67,8 +118,27 @@
         <div class="success-message">Анкета успешно отправлена</div>
         <div class="buttons-container" style="display: flex; gap: 20px; justify-content: center;">
             <a href="/" class="btn">Вернуться на главную страницу</a>
-            <a href="/tests/results" class="btn" style="background-color: #2ecc71;">Посмотреть результаты</a>
+            <button onclick="toggleResults()" class="btn" style="background-color: #2ecc71;">Посмотреть результаты</button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="results-section">
+            <div class="results-content">
+                <div class="results-title">Ваш тип личности</div>
+                {% if result_to_print %}
+                    <div class="result-text">{{ result_to_print.strip() | replace('\n\nРекомендуемые профессии:', '<div class="recommended-professions"><strong>Рекомендуемые профессии:</strong>') | safe }}</div>
+                {% else %}
+                    <div class="result-text">Результаты пока не доступны...</div>
+                {% endif %}
+            </div>
         </div>
     </div>
+
+    <script>
+        function toggleResults() {
+            const resultsSection = document.getElementById('resultsSection');
+            resultsSection.classList.toggle('expanded');
+        }
+    </script>
 </body>
 </html> 

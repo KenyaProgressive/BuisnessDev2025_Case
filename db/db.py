@@ -28,3 +28,5 @@ def insert_basic_answers_data(data):
             cursor.execute(query_push_answers, (answers[1], tm))
             cursor.execute(query_push_answers, (answers[2], tm))
             cursor.execute(query_push_answers, (answers[3], tm))
+    return answers
+
