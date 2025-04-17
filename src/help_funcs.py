@@ -59,4 +59,32 @@ def make_additional_data_structure(data: TestAnswersAdditional):
 
 
 def make_a_choice_for_additional(data):
-    res = [" "] * 9
+    res = [" "] * 3
+    case1 = data[0:3]
+    case2 = data[3:6]
+    case3 = data[6:]
+    if case1.count("A") > 2:
+        res[0] = "case1_A.txt"
+    elif case1.count("B") > 2:
+        res[0] = "case1_B.txt"
+    elif case1.count("C") > 2:
+        res[0] = "case1_C.txt"
+    elif case1.count("D") > 2:
+        res[0] = "case1_D.txt"
+    if case2.count("A") > 2:
+        res[1] = "case2_A.txt"
+    elif case2.count("B") > 2:
+        res[1] = "case2_B.txt"
+    elif case2.count("C") > 2:
+        res[1] = "case2_C.txt"
+    elif case2.count("D") > 2:
+        res[1] = "case2_D.txt"
+    if case3.count("A") > 2:
+        res[2] = "case3_A.txt"
+    elif case3.count("B") > 2:
+        res[2] = "case3_B.txt"
+    elif case3.count("C") > 2:
+        res[2] = "case3_C.txt"
+    elif case3.count("D") > 2:
+        res[2] = "case3_D.txt"
+    return res

@@ -23,3 +23,8 @@ class TestAnswersAdditional(pydantic.BaseModel):
     case3_q1: str
     case3_q2: str
     case3_q3: str
+
+class AI_Prompt(pydantic.BaseModel):
+    prompt: str
+
+

@@ -1,6 +1,7 @@
 import os
 from yandex_neural_api.client import YandexNeuralAPIClient
 from dotenv import load_dotenv
+from src.models.models import AI_Prompt
 
 load_dotenv()
 
@@ -13,3 +14,6 @@ client = YandexNeuralAPIClient(
     llm_max_tokens=2000
 )
 
+def print_info_to_user(prompt: AI_Prompt):
+    result = client.generate_text(prompt.prompt)
+    return prompt, result
