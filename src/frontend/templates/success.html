@@ -60,16 +60,16 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
-        /* New styles for results section */
         .results-section {
             margin-top: 30px;
+            height: 0;
             overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.5s ease-out;
+            transition: height 0.5s ease-out;
+            opacity: 0;
         }
         .results-section.expanded {
-            max-height: 2000px;
-            transition: max-height 0.5s ease-in;
+            height: auto;
+            opacity: 1;
         }
         .results-content {
             background-color: #f8f9fa;
@@ -107,16 +107,14 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .results-content {
-            animation: fadeIn 0.5s ease-out;
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="success-icon">✓</div>
         <div class="success-message">Анкета успешно отправлена</div>
-        <div class="buttons-container" style="display: flex; gap: 20px; justify-content: center;">
+        
+        <div class="buttons-container" style="display: flex; gap: 20px; justify-content: center; margin-bottom: 20px;">
             <a href="/" class="btn">Вернуться на главную страницу</a>
             <button onclick="toggleResults()" class="btn" style="background-color: #2ecc71;">Посмотреть результаты</button>
         </div>
@@ -137,8 +135,24 @@
     <script>
         function toggleResults() {
             const resultsSection = document.getElementById('resultsSection');
-            resultsSection.classList.toggle('expanded');
+            const content = resultsSection.querySelector('.results-content');
+            
+            if (!resultsSection.classList.contains('expanded')) {
+                // Показываем результаты
+                resultsSection.classList.add('expanded');
+                resultsSection.style.height = content.offsetHeight + 'px';
+            } else {
+                // Скрываем результаты
+                resultsSection.classList.remove('expanded');
+                resultsSection.style.height = '0';
+            }
         }
+
+        // Инициализация высоты контента
+        window.addEventListener('load', function() {
+            const resultsSection = document.getElementById('resultsSection');
+            resultsSection.style.height = '0';
+        });
     </script>
 </body>
 </html> 

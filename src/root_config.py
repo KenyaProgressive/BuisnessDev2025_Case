@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from src.routes.routes import *
+from routes.routes import *
 from jinja_config import templates
 from fastapi.middleware.cors import CORSMiddleware
 
