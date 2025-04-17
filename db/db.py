@@ -3,6 +3,7 @@ from datetime import datetime
 
 from dotenv import load_dotenv
 from psycopg2 import sql, connect
+from src.help_funcs import make_additional_data_structure
 
 load_dotenv()
 
@@ -29,4 +30,16 @@ def insert_basic_answers_data(data):
             cursor.execute(query_push_answers, (answers[2], tm))
             cursor.execute(query_push_answers, (answers[3], tm))
     return answers
+
+def insert_additional_answers_data(data):
+    table_name = "additional_test_answers"
+    answers = make_additional_data_structure(data)
+    tm = datetime.now()
+    with conn:
+        with conn.cursor() as cursor:
+            query_push_answers = sql.SQL("""INSERT INTO {} (answer, datetime_answer) VALUES (%s, %s)""").format(sql.Identifier(table_name))
+            for i in range(len(answers)):
+                cursor.execute(query_push_answers, (answers[i], tm))
+    return answers
+
 

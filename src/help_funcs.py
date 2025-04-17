@@ -1,3 +1,6 @@
+from src.models.models import TestAnswersAdditional
+
+
 def make_a_choise_for_base(data):
     res = [" ", " ", " ", " "]
     if data[0] == "A":
@@ -37,3 +40,23 @@ VARIANTS_FOR_BASIC = {
     "ENFJ": "ENFJ.txt",
     "ENTJ": "ENTJ.txt"
 }
+
+
+def make_additional_data_structure(data: TestAnswersAdditional):
+    additional_data_structure = [
+        data.case1_q1,
+        data.case1_q2,
+        data.case1_q3,
+        data.case2_q1,
+        data.case2_q2,
+        data.case2_q3,
+        data.case3_q1,
+        data.case3_q2,
+        data.case3_q3
+    ]
+
+    return additional_data_structure
+
+
+def make_a_choice_for_additional(data):
+    res = [" "] * 9
