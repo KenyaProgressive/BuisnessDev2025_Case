@@ -40,21 +40,24 @@ def medium_level_test(request_medium_test: Request):
 
 
 @tpage.post("/test2/submit")
-def submit_results_of_medium_level(request: Request, answers_2: TestAnswersAdditional):
+def submit_results_of_medium_level(answers_2: TestAnswersAdditional):
     insert_additional_answers_data(answers_2)
     data = make_additional_data_structure(answers_2)
-    result = ','.join(make_a_choice_for_additional(data)).strip()
+    result = ','.join(data).strip()
     return fastapi.responses.RedirectResponse(url=f"/tests/test2/success?result={result}", status_code=303)
 
 @tpage.get("/test2/success", response_class=HTMLResponse)
 def print_success_test2(request: Request, result: str = None):
     result_to_print = ""
+    temp = ""
     if result:
-        result_lst = result.split(",")
+        result_lst = make_a_choice_for_additional(result.split(","))
+        print(result_lst)
         for res in result_lst:
-            with open(f"test_results/additional/{res.strip()}", "r", encoding="utf-8") as f:
-                    res = f.read()
-            result_to_print += res
+            if res != " ":
+                with open("test_results/additional/{}".format(res), "r", encoding="utf-8") as f:
+                    temp = f.read()
+                result_to_print += temp
     return templates.TemplateResponse("success.html", {"request": request, "result_to_print": result_to_print})
 
 @tpage.get("/test3", response_class=HTMLResponse)
